@@ -35,7 +35,7 @@ void PID() {
   // D_error
   errorDerivative[ROLL] = error[ROLL] - previousError[ROLL];
   previousError[ROLL] = error[ROLL];
-  motor_error[ROLL] = error[ROLL] * parameterP + errorSum[ROLL] * parameterI * cycleTime + errorDerivative[ROLL] * parameterD / cycleTime;
+  motor_error[ROLL] = error[ROLL] * parameterP + errorSum[ROLL] * parameterI + errorDerivative[ROLL] * parameterD ;
   
   /************************
   * PITCH error calculate.
@@ -49,7 +49,7 @@ void PID() {
   // D_error
   errorDerivative[PITCH] = error[PITCH] - previousError[PITCH];
   previousError[PITCH] = error[PITCH];
-  motor_error[PITCH] = error[PITCH] * parameterP + errorSum[PITCH] * parameterI * cycleTime + errorDerivative[PITCH] * parameterD / cycleTime;
+  motor_error[PITCH] = error[PITCH] * parameterP + errorSum[PITCH] * parameterI + errorDerivative[PITCH] * parameterD;
   
   // speeds asignment
   Speeds.speedArray[0] = commandThrottle -  motor_error[ROLL];
